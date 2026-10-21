@@ -1,0 +1,50 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+*.log
+*.mp4
+*:Zone.Identifier
+
+# Raw and generated data are kept outside the source repository.
+data/*.csv
+data/images/
+data/jsons/
+data/radar/
+data/s3_myformatted/
+data/prepared/
+
+# Training outputs and checkpoints are not source code.
+outputs/
+branches/**/outputs/
+*.ckpt
+*.pth
+*.pt
+*.joblib
+*.pkl
+*.npy
+*.npz
+
+# Offline installer cache: recreate with scripts/prepare_offline_bundle.sh.
+# Keep the small manifest so the bundle contents remain documented.
+/offline_bundle_rtx4000_cu117/*
+!/offline_bundle_rtx4000_cu117/MANIFEST.txt
+
+# Pretrained weights are distributed separately from the source repository.
+/pretrained/*
+!/pretrained/README.md
+
+# Common downloaded archives and compiled model/runtime artifacts.
+*.whl
+*.conda
+*.tar.gz
+*.safetensors
+*.onnx
+
+# Local tooling and machine-specific state.
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

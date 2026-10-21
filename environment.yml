@@ -1,0 +1,16 @@
+name: crn_test
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - cmake
+  - ninja
+  - gcc_linux-64
+  - gxx_linux-64
+
+# This file is a Linux environment reference for a new machine.  On the
+# current machine use the already verified CRN_50 environment.  Install the
+# target GPU's PyTorch build first, then install the remaining compatible
+# packages.  The local CRN and mmdetection3d sources are loaded by PYTHONPATH;
+# do not editable-install them merely to run this project.

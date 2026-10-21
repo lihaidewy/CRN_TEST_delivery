@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "scene_id": "s3m_example",
+  "inputs": {
+    "radar_csv": "../data/radar/S3_M.csv",
+    "image_dir": "../data/images/S3M",
+    "annotation_dir": "../data/jsons/M3dbox"
+  },
+  "output": {
+    "data_root": "../data/prepared/s3m_example",
+    "info_pkl_name": "infos_s3m_all.pkl",
+    "output_root": "../outputs/scenes/s3m_example"
+  },
+  "dataset_split": {
+    "strategy": "chronological",
+    "train_ratio": 0.7,
+    "val_ratio": 0.2,
+    "test_ratio": 0.1
+  },
+  "calibration": {
+    "coordinate_convention": "world_forward_left_up__camera_forward_left_up",
+    "ground_z_world_m": -30.0,
+    "camera": {
+      "intrinsics": {
+        "fx": 3325.5375505322445,
+        "fy": 3325.5375505322445,
+        "cx": 1920.0,
+        "cy": 1080.0
+      },
+      "image_width": 3840,
+      "image_height": 2160,
+      "world_to_camera_4x4": [
+        [0.93969262, 0.0, -0.34202014, 0.0],
+        [0.0, 1.0, 0.0, 0.0],
+        [0.34202014, 0.0, 0.93969262, 0.0],
+        [0.0, 0.0, 0.0, 1.0]
+      ]
+    },
+    "radar": {
+      "position_world_xy_m": [0.0, 0.0],
+      "height_above_ground_m": 30.0,
+      "yaw_deg": 0.0,
+      "return_height_above_ground_m": 0.0,
+      "range_type": "slant",
+      "angle_type": "horizontal_azimuth",
+      "angle_unit": "degree",
+      "angle_positive": "left",
+      "speed_type": "radial",
+      "signal_feature": {
+        "type": "snr",
+        "normalization": "auto_train"
+      }
+    }
+  },
+  "bev": {
+    "x_bound_m": [0.0, 192.0],
+    "y_bound_m": [-40.0, 40.0],
+    "cell_size_m": 0.4
+  },
+  "model": {
+    "input_size_hw": [512, 1408],
+    "depth_bound_m": [2.0, 242.0, 2.0],
+    "z_bound_m": [-5.0, 3.0],
+    "max_radar_points_pv": 1536,
+    "image_augmentation": {
+      "resize_lim": [0.37, 0.38]
+    }
+  },
+  "training": {
+    "epochs": 20,
+    "batch_size": 1,
+    "seed": 0,
+    "learning_rate": 0.00001,
+    "weight_decay": 0.0001,
+    "lr_milestone_ratios": [0.3, 0.7],
+    "lr_gamma": 0.1,
+    "num_workers": 0,
+    "checkpoint_every_n_epochs": 5,
+    "validate_during_training": true,
+    "validation_every_n_epochs": 5,
+    "init_checkpoint": "../pretrained/s3_full_512h_epoch23_step13392.ckpt"
+  },
+  "evaluation": {
+    "score_threshold": 0.5,
+    "match_distance_m": 2.0,
+    "max_frames": -1,
+    "visualizations": false,
+    "distance_bins_m": [0.0, 50.0, 100.0, 150.0, 200.0, 240.0]
+  }
+}

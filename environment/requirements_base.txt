@@ -1,0 +1,16 @@
+# CRN_TEST runtime dependencies (PyTorch is installed separately by setup_environment.sh)
+pytorch-lightning==1.6.0
+mmcv-full==1.7.0
+mmdet==2.25.2
+mmsegmentation==0.30.0
+numpy==1.26.4
+opencv-python==4.8.1.78
+Pillow==12.1.1
+pyquaternion==0.9.9
+nuscenes-devkit==1.2.0
+scipy==1.15.3
+matplotlib==3.10.9
+tensorboard==2.20.0
+PyYAML==6.0.3
+tqdm==4.67.3
+terminaltables==3.1.10
